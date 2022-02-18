@@ -3,9 +3,12 @@ const Koa = require('koa')
 const mount = require('koa-mount')
 const { graphqlHTTP } = require('koa-graphql')
 const schema = require('./schema')
+const { dbclient } = require('./helpers/database')
 const dirimport = require('./helpers/dirimport')
 
 dirimport(path.join(__dirname, 'models'))
+
+dbclient.connect()
 
 const app = new Koa()
 const port = process.env.PORT || 80

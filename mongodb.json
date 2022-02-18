@@ -1,0 +1,3 @@
+{
+  "connection": "mongodb+srv://dbuser:Cuiy8fq2eEtQDeN6@cluster0.c40hd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+}

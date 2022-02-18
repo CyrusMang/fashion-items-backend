@@ -1,13 +1,30 @@
 const graphql = require('graphql')
+const { m } = require('../helpers/models')
+const { FashionItemType, FashionItemFilterType } = require('./types/fashionItem')
 
 const {
   GraphQLObjectType, 
   GraphQLSchema, 
+  GraphQLString,
+  GraphQLInt, 
+  GraphQLList,
 } = graphql
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
-  fields: {},
+  fields: {
+    fashionItems: {
+      type: new GraphQLList(FashionItemType),
+      args: {
+        filter: {type: FashionItemFilterType},
+        page: {type: GraphQLInt},
+        perpage: {type: GraphQLInt},
+      },
+      resolve: (_, args, ctx) => {
+        return m('FashionItem').search(ctx, args.filter, args.page, args.perpage)
+      }
+    },
+  },
 })
 
 const Mutation = new GraphQLObjectType({
@@ -17,5 +34,5 @@ const Mutation = new GraphQLObjectType({
 
 module.exports = new GraphQLSchema({
   query: RootQuery,
-  mutation: Mutation,
+  // mutation: Mutation,
 })
