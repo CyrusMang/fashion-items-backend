@@ -1,0 +1,20 @@
+{
+  "name": "fashion-items-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "graphql": "^16.3.0",
+    "koa": "^2.13.4",
+    "koa-graphql": "^0.12.0",
+    "koa-mount": "^4.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
